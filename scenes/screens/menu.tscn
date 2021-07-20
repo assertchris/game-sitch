@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/screens/screen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/screens/menu.gd" type="Script" id=2]
+[ext_resource path="res://scenes/interface/button.tscn" type="PackedScene" id=3]
+
+[node name="Menu" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Interface" type="CanvasLayer" parent="." index="0"]
+
+[node name="Center" type="CenterContainer" parent="Interface" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="VBoxContainer" parent="Interface/Center" index="0"]
+margin_left = 460.0
+margin_top = 134.0
+margin_right = 820.0
+margin_bottom = 586.0
+
+[node name="NewGame" parent="Interface/Center/Buttons" index="0" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 360.0
+margin_bottom = 110.0
+label = "new game"
+
+[node name="Settings" parent="Interface/Center/Buttons" index="1" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 114.0
+margin_right = 360.0
+margin_bottom = 224.0
+label = "settings"
+
+[node name="Credits" parent="Interface/Center/Buttons" index="2" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 228.0
+margin_right = 360.0
+margin_bottom = 338.0
+label = "credits"
+
+[node name="Patrons" parent="Interface/Center/Buttons" index="3" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 342.0
+margin_right = 360.0
+margin_bottom = 452.0
+label = "patrons"
+
+[connection signal="pressed" from="Interface/Center/Buttons/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Interface/Center/Buttons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Interface/Center/Buttons/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Interface/Center/Buttons/Patrons" to="." method="_on_patrons_pressed"]

@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/screens/screen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/screens/new-game.gd" type="Script" id=2]
+[ext_resource path="res://scenes/interface/button.tscn" type="PackedScene" id=5]
+
+[node name="NewGame" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+back_screen = 3
+
+[node name="Interface" type="CanvasLayer" parent="." index="0"]
+
+[node name="Center" type="CenterContainer" parent="Interface" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="VBoxContainer" parent="Interface/Center" index="0"]
+margin_left = 460.0
+margin_top = 248.0
+margin_right = 820.0
+margin_bottom = 472.0
+
+[node name="DinerBlock" parent="Interface/Center/Buttons" index="0" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 360.0
+margin_bottom = 110.0
+label = "diner block"
+
+[node name="Back" parent="Interface/Center/Buttons" index="1" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 114.0
+margin_right = 360.0
+margin_bottom = 224.0
+label = "back"
+
+[connection signal="pressed" from="Interface/Center/Buttons/DinerBlock" to="." method="_on_diner_block_pressed"]
+[connection signal="pressed" from="Interface/Center/Buttons/Back" to="." method="_on_back_pressed"]
