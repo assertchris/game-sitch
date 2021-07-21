@@ -26,3 +26,4 @@ func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.is_pressed():
 			emit_signal("pressed")
+			Sounds.play_sound(Constants.SOUNDS.BUTTON)

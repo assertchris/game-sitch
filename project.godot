@@ -48,7 +48,7 @@ Constants="*res://scenes/globals/constants.tscn"
 Variables="*res://scenes/globals/variables.tscn"
 Events="*res://scenes/globals/events.tscn"
 Screens="*res://scenes/globals/screens.tscn"
-Audio="*res://scenes/globals/sounds.tscn"
+Sounds="*res://scenes/globals/sounds.tscn"
 
 [display]
 

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/income-1.wav-95e2efe2b94d6a1f4300e53f8a762894.sample"
+
+[deps]
+
+source_file="res://sounds/income-1.wav"
+dest_files=[ "res://.import/income-1.wav-95e2efe2b94d6a1f4300e53f8a762894.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

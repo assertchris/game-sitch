@@ -13,7 +13,7 @@ func play_sound(sound: int) -> void:
 	add_child(player)
 
 	player.bus = "sounds"
-	player.stream = Constants.SOUNDS_PATHS[sound]
+	player.stream = load(Constants.SOUNDS_PATHS[sound])
 	player.play()
 
 	yield(player, "finished")

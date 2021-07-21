@@ -100,6 +100,9 @@ func take_money_away() -> void:
 	if Variables.current_money <= 0:
 		Events.emit_signal("level_lost")
 		Events.emit_signal("stop_tick_timer")
+		Sounds.play_sound(Constants.SOUNDS.LOSE)
+	else:
+		Sounds.play_sound(Constants.SOUNDS.PENALTY)
 
 func get_income(amount: int) -> void:
 	_label.text = "$" + str(amount)

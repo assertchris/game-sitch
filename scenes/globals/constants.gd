@@ -22,10 +22,24 @@ const SCREENS_PATHS := {
 enum SOUNDS {
 	NONE,
 	BUTTON,
+	INCOME,
+	LOSE,
+	PENALTY,
+	POWER_ON,
+	REFILL,
+	WATER_ON,
+	WIN,
 }
 
 const SOUNDS_PATHS := {
-	SOUNDS.BUTTON: ""
+	SOUNDS.BUTTON: "res://sounds/button-1.wav",
+	SOUNDS.INCOME: "res://sounds/income-1.wav",
+	SOUNDS.LOSE: "res://sounds/lose-1.wav",
+	SOUNDS.PENALTY: "res://sounds/penalty-1.wav",
+	SOUNDS.POWER_ON: "res://sounds/power-on-1.wav",
+	SOUNDS.REFILL: "res://sounds/refill-1.wav",
+	SOUNDS.WATER_ON: "res://sounds/water-on-1.wav",
+	SOUNDS.WIN: "res://sounds/win-1.wav",
 }
 
 enum LEVELS {

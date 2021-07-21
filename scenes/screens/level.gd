@@ -43,6 +43,7 @@ func _on_tick() -> void:
 		Variables.current_hours = 0
 		Variables.current_days += 1
 		Variables.current_money += total
+		Sounds.play_sound(Constants.SOUNDS.INCOME)
 
 	var fixtures = get_tree().get_nodes_in_group("fixtures")
 
@@ -53,9 +54,11 @@ func _on_tick() -> void:
 					if Variables.current_money < Constants.REFILL_COST_POWER:
 						Events.emit_signal("level_lost")
 						Events.emit_signal("stop_tick_timer")
+						Sounds.play_sound(Constants.SOUNDS.LOSE)
 					else:
 						Variables.current_money -= Constants.REFILL_COST_POWER
 						Variables.current_power += Constants.STARTING_POWER
+						Sounds.play_sound(Constants.SOUNDS.REFILL)
 
 				Variables.current_power -= fixture.resource_cost
 
@@ -64,8 +67,10 @@ func _on_tick() -> void:
 					if Variables.current_money < Constants.REFILL_COST_WATER:
 						Events.emit_signal("level_lost")
 						Events.emit_signal("stop_tick_timer")
+						Sounds.play_sound(Constants.SOUNDS.LOSE)
 					else:
 						Variables.current_money -= Constants.REFILL_COST_POWER
 						Variables.current_water += Constants.STARTING_WATER
+						Sounds.play_sound(Constants.SOUNDS.REFILL)
 
 				Variables.current_water -= fixture.resource_cost
