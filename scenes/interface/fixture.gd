@@ -4,6 +4,7 @@ const FIXTURES = preload("res://scenes/globals/constants.gd").FIXTURES
 
 export (FIXTURES) var type := FIXTURES.NONE
 export var enable_time := 1.0
+export var resource_cost := 5.0
 
 onready var _enable_timer := $EnableTimer
 

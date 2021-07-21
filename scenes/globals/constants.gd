@@ -48,5 +48,18 @@ const FIXTURES_COLORS := {
 	FIXTURES.WATER: [0.133, 0.545, 0.901],
 }
 
+const TICK_SECONDS := 5.0
+const TICK_MINUTES_INCREASE := 30
+
+const STARTING_POWER := 100
+const STARTING_WATER := 100
+const STARTING_MONEY := 250
+const STARTING_HOURS := 12
+const STARTING_MINUTES := 0
+const STARTING_DAYS := 1
+
+const REFILL_COST_POWER := 50
+const REFILL_COST_WATER := 50
+
 const SAVE_FILE_PATH := "user://sitch.save"
 const SAVE_FILE_KEY := "Psv88zNNissCwWcQng@KBDQm"

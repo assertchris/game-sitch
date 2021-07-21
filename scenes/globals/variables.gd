@@ -4,6 +4,12 @@ var has_loaded := false
 var needs_to_save := false
 
 var current_level := preload("res://scenes/globals/constants.gd").LEVELS.NONE
+var current_power: int
+var current_water: int
+var current_money: int
+var current_hours: int
+var current_minutes: int
+var current_days: int
 
 var sounds_bus := AudioServer.get_bus_index("sounds")
 

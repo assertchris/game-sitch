@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/levels/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/levels/diner-block.gd" type="Script" id=2]
@@ -12,11 +12,78 @@
 [ext_resource path="res://images/microwave-1.png" type="Texture" id=10]
 [ext_resource path="res://images/cooker-1.png" type="Texture" id=11]
 [ext_resource path="res://images/counter-1.png" type="Texture" id=12]
+[ext_resource path="res://resources/stats-font.tres" type="DynamicFont" id=13]
 
 [node name="DinerBlock" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+time_path = NodePath("Stats/Time")
+day_path = NodePath("Stats/Day")
+money_path = NodePath("Stats/Money")
+power_path = NodePath("Power")
+water_path = NodePath("Water")
 
-[node name="Second" type="Node2D" parent="." index="0"]
+[node name="Water" type="ColorRect" parent="." index="0"]
+margin_left = 403.0
+margin_top = 541.0
+margin_right = 428.0
+margin_bottom = 675.0
+color = Color( 0.133333, 0.545098, 0.901961, 0.501961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Power" type="ColorRect" parent="." index="1"]
+margin_left = 434.0
+margin_top = 541.0
+margin_right = 459.0
+margin_bottom = 675.0
+color = Color( 0.980392, 0.690196, 0.0196078, 0.501961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="VBoxContainer" parent="." index="2"]
+margin_left = 510.0
+margin_top = 555.0
+margin_right = 596.0
+margin_bottom = 662.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="Stats" index="0"]
+margin_right = 86.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 13 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "18:00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Day" type="Label" parent="Stats" index="1"]
+margin_top = 37.0
+margin_right = 86.0
+margin_bottom = 70.0
+custom_fonts/font = ExtResource( 13 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Day 13"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Money" type="Label" parent="Stats" index="2"]
+margin_top = 74.0
+margin_right = 86.0
+margin_bottom = 107.0
+custom_fonts/font = ExtResource( 13 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "$250"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Second" type="Node2D" parent="." index="3"]
 
 [node name="Microwave" parent="Second" index="0" instance=ExtResource( 4 )]
 margin_left = 388.0
@@ -53,7 +120,7 @@ texture = ExtResource( 9 )
 type = 1
 enable_time = 0.25
 
-[node name="First" type="Node2D" parent="." index="1"]
+[node name="First" type="Node2D" parent="." index="4"]
 
 [node name="Microwave" parent="First" index="0" instance=ExtResource( 4 )]
 margin_left = 608.0
@@ -81,7 +148,7 @@ texture = ExtResource( 6 )
 type = 2
 enable_time = 0.25
 
-[node name="Deli" type="Node2D" parent="." index="2"]
+[node name="Deli" type="Node2D" parent="." index="5"]
 
 [node name="Toilet1" parent="Deli" index="0" instance=ExtResource( 4 )]
 margin_left = 341.0
@@ -119,7 +186,7 @@ texture = ExtResource( 12 )
 type = 1
 enable_time = 0.25
 
-[node name="Structure" type="Sprite" parent="." index="3"]
+[node name="Structure" type="Sprite" parent="." index="6"]
 position = Vector2( 641, 362 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )

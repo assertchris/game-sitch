@@ -4,3 +4,9 @@
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="StatsTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[connection signal="timeout" from="StatsTimer" to="." method="_on_stats_timer_timeout"]
