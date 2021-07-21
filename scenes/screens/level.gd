@@ -32,9 +32,17 @@ func _on_tick() -> void:
 	else:
 		Variables.current_minutes = next_minutes
 
-	if Variables.current_hours >= 24:
+	if Variables.current_hours > 23:
+		var people = get_tree().get_nodes_in_group("people")
+		var total = 0
+
+		for person in people:
+			total += person.daily_income
+			person.get_income(person.daily_income)
+
 		Variables.current_hours = 0
 		Variables.current_days += 1
+		Variables.current_money += total
 
 	var fixtures = get_tree().get_nodes_in_group("fixtures")
 

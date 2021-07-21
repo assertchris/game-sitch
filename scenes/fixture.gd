@@ -1,12 +1,16 @@
 extends TextureRect
+class_name Fixture
 
 const FIXTURES = preload("res://scenes/globals/constants.gd").FIXTURES
 
 export (FIXTURES) var type := FIXTURES.NONE
+
 export var enable_time := 1.0
 export var resource_cost := 5.0
+export var use_time := 10.0
 
-onready var _enable_timer := $EnableTimer
+onready var _enable_timer := $EnableTimer as Timer
+onready var _target_position := $TargetPosition as Position2D
 
 var enabled := false
 var can_enable := true
@@ -70,3 +74,6 @@ func tween_enabled() -> void:
 	)
 
 	tween.start()
+
+func get_target_position() -> Position2D:
+	return  _target_position

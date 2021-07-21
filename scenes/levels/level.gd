@@ -2,7 +2,6 @@ extends Node2D
 class_name Level
 
 export var win_money := 500
-
 export var time_path: NodePath
 export var day_path: NodePath
 export var money_path: NodePath

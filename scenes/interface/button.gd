@@ -4,10 +4,7 @@ tool
 signal pressed
 
 export var label := "button"
-export var image_0: Texture
-export var image_1: Texture
-export var image_2: Texture
-export var image_3: Texture
+export (Array, Texture) var images
 
 onready var _texture := $Texture
 onready var _label := $Label
@@ -15,8 +12,7 @@ onready var _label := $Label
 func _ready() -> void:
 	randomize()
 
-	var image_number = randi() % 4
-	var image_texture = get("image_" + str(image_number))
+	var image_texture = images[randi() % images.size()]
 
 	_texture.texture_normal = image_texture
 	_texture.texture_disabled = image_texture

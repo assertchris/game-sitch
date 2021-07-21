@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/levels/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/levels/diner-block.gd" type="Script" id=2]
 [ext_resource path="res://images/diner-block-background-1.png" type="Texture" id=3]
-[ext_resource path="res://scenes/interface/fixture.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/fixture.tscn" type="PackedScene" id=4]
 [ext_resource path="res://images/bath-1.png" type="Texture" id=5]
 [ext_resource path="res://images/left-facing-toilet-1.png" type="Texture" id=6]
 [ext_resource path="res://images/right-facing-toilet-1.png" type="Texture" id=7]
@@ -13,6 +13,7 @@
 [ext_resource path="res://images/cooker-1.png" type="Texture" id=11]
 [ext_resource path="res://images/counter-1.png" type="Texture" id=12]
 [ext_resource path="res://resources/stats-font.tres" type="DynamicFont" id=13]
+[ext_resource path="res://scenes/person.tscn" type="PackedScene" id=14]
 
 [node name="DinerBlock" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -84,107 +85,230 @@ __meta__ = {
 }
 
 [node name="Second" type="Node2D" parent="." index="3"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Microwave" parent="Second" index="0" instance=ExtResource( 4 )]
-margin_left = 388.0
+margin_left = 387.0
 margin_top = 100.0
-margin_right = 545.0
+margin_right = 544.0
 margin_bottom = 265.0
 texture = ExtResource( 10 )
 type = 1
 enable_time = 0.25
+use_time = 15.0
+
+[node name="TargetPosition" parent="Second/Microwave" index="1"]
+position = Vector2( 44, 154 )
 
 [node name="Shower" parent="Second" index="1" instance=ExtResource( 4 )]
 margin_left = 544.0
-margin_top = 72.0
+margin_top = 70.0
 margin_right = 681.0
-margin_bottom = 294.0
+margin_bottom = 292.0
 texture = ExtResource( 8 )
 type = 2
+use_time = 25.0
+
+[node name="TargetPosition" parent="Second/Shower" index="1"]
+position = Vector2( 68, 212 )
 
 [node name="Toilet" parent="Second" index="2" instance=ExtResource( 4 )]
-margin_left = 959.0
-margin_top = 282.0
-margin_right = 1058.0
-margin_bottom = 381.0
+margin_left = 660.0
+margin_top = 130.0
+margin_right = 759.0
+margin_bottom = 229.0
 texture = ExtResource( 6 )
 type = 2
 enable_time = 0.25
 
+[node name="TargetPosition" parent="Second/Toilet" index="1"]
+position = Vector2( 12, 94 )
+
 [node name="Television" parent="Second" index="3" instance=ExtResource( 4 )]
-margin_left = 926.0
+margin_left = 928.0
 margin_top = 73.0
-margin_right = 1102.0
+margin_right = 1104.0
 margin_bottom = 293.0
 texture = ExtResource( 9 )
 type = 1
 enable_time = 0.25
+use_time = 60.0
+
+[node name="TargetPosition" parent="Second/Television" index="1"]
+position = Vector2( 18, 208 )
+
+[node name="Resident" parent="Second" index="4" instance=ExtResource( 14 )]
+position = Vector2( 355, 180 )
+z_index = 5
+type = 1
+idle_positions = [ NodePath("../Idle1"), NodePath("../Idle2"), NodePath("../Idle3"), NodePath("../Idle4") ]
+water_fixtures = [ NodePath("../Toilet"), NodePath("../Shower") ]
+power_fixtures = [ NodePath("../Microwave"), NodePath("../Television") ]
+daily_income = 70
+
+[node name="Idle1" type="Position2D" parent="Second" index="5"]
+position = Vector2( 354, 181 )
+
+[node name="Idle2" type="Position2D" parent="Second" index="6"]
+position = Vector2( 506, 181 )
+
+[node name="Idle3" type="Position2D" parent="Second" index="7"]
+position = Vector2( 831, 181 )
+
+[node name="Idle4" type="Position2D" parent="Second" index="8"]
+position = Vector2( 1049, 181 )
 
 [node name="First" type="Node2D" parent="." index="4"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Microwave" parent="First" index="0" instance=ExtResource( 4 )]
-margin_left = 608.0
-margin_top = 257.0
-margin_right = 765.0
-margin_bottom = 422.0
+margin_left = 609.0
+margin_top = 256.0
+margin_right = 766.0
+margin_bottom = 421.0
 texture = ExtResource( 10 )
 type = 1
 enable_time = 0.25
+use_time = 15.0
+
+[node name="TargetPosition" parent="First/Microwave" index="1"]
+position = Vector2( 38, 156 )
 
 [node name="Bath" parent="First" index="1" instance=ExtResource( 4 )]
-margin_left = 815.0
-margin_top = 301.0
-margin_right = 1020.0
-margin_bottom = 359.0
+margin_left = 813.0
+margin_top = 306.0
+margin_right = 1018.0
+margin_bottom = 364.0
 texture = ExtResource( 5 )
 type = 2
+use_time = 25.0
+
+[node name="TargetPosition" parent="First/Bath" index="1"]
+position = Vector2( 60, 44 )
 
 [node name="Toilet" parent="First" index="2" instance=ExtResource( 4 )]
-margin_left = 659.0
-margin_top = 127.0
-margin_right = 758.0
-margin_bottom = 226.0
+margin_left = 959.0
+margin_top = 286.0
+margin_right = 1058.0
+margin_bottom = 385.0
 texture = ExtResource( 6 )
 type = 2
 enable_time = 0.25
 
+[node name="TargetPosition" parent="First/Toilet" index="1"]
+position = Vector2( 22, 96 )
+
+[node name="Resident" parent="First" index="3" instance=ExtResource( 14 )]
+position = Vector2( 728, 339 )
+z_index = 5
+type = 1
+idle_positions = [ NodePath("../Idle1"), NodePath("../Idle2"), NodePath("../Idle3"), NodePath("../Idle4") ]
+water_fixtures = [ NodePath("../Bath"), NodePath("../Toilet") ]
+power_fixtures = [ NodePath("../Microwave") ]
+daily_income = 50
+
+[node name="Idle1" type="Position2D" parent="First" index="4"]
+position = Vector2( 433, 336 )
+
+[node name="Idle2" type="Position2D" parent="First" index="5"]
+position = Vector2( 555, 336 )
+
+[node name="Idle3" type="Position2D" parent="First" index="6"]
+position = Vector2( 726, 336 )
+
+[node name="Idle4" type="Position2D" parent="First" index="7"]
+position = Vector2( 286, 336 )
+
 [node name="Deli" type="Node2D" parent="." index="5"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Toilet1" parent="Deli" index="0" instance=ExtResource( 4 )]
-margin_left = 341.0
+margin_left = 340.0
 margin_top = 434.0
-margin_right = 438.0
+margin_right = 437.0
 margin_bottom = 534.0
 texture = ExtResource( 7 )
 type = 2
 enable_time = 0.25
+use_time = 5.0
+
+[node name="TargetPosition" parent="Deli/Toilet1" index="1"]
+position = Vector2( 76, 96 )
 
 [node name="Toilet2" parent="Deli" index="1" instance=ExtResource( 4 )]
 margin_left = 440.0
-margin_top = 433.0
+margin_top = 435.0
 margin_right = 537.0
-margin_bottom = 533.0
+margin_bottom = 535.0
 texture = ExtResource( 7 )
 type = 2
 enable_time = 0.25
+use_time = 5.0
+
+[node name="TargetPosition" parent="Deli/Toilet2" index="1"]
+position = Vector2( 80, 96 )
 
 [node name="Cooker" parent="Deli" index="2" instance=ExtResource( 4 )]
 margin_left = 512.0
-margin_top = 428.0
+margin_top = 427.0
 margin_right = 592.0
-margin_bottom = 554.0
+margin_bottom = 553.0
 texture = ExtResource( 11 )
 type = 1
 enable_time = 0.75
+use_time = 25.0
+
+[node name="TargetPosition" parent="Deli/Cooker" index="1"]
+position = Vector2( 90, 118 )
 
 [node name="Counter" parent="Deli" index="3" instance=ExtResource( 4 )]
-margin_left = 632.0
-margin_top = 410.0
-margin_right = 712.0
-margin_bottom = 572.0
+margin_left = 634.0
+margin_top = 409.0
+margin_right = 714.0
+margin_bottom = 571.0
 texture = ExtResource( 12 )
 type = 1
 enable_time = 0.25
+use_time = 15.0
+
+[node name="TargetPosition" parent="Deli/Counter" index="1"]
+position = Vector2( -16, 152 )
+
+[node name="DeliWorker" parent="Deli" index="4" instance=ExtResource( 14 )]
+position = Vector2( 589, 486 )
+z_index = 5
+type = 2
+idle_positions = [ NodePath("../DeliWorkerIdle1") ]
+power_fixtures = [ NodePath("../Cooker"), NodePath("../Counter") ]
+daily_income = 100
+
+[node name="DeliCustomer" parent="Deli" index="5" instance=ExtResource( 14 )]
+position = Vector2( 717, 487 )
+z_index = 5
+type = 3
+idle_positions = [ NodePath("../DeliCustomerIdle1"), NodePath("../DeliCustomerIdle2"), NodePath("../DeliCustomerIdle3"), NodePath("../DeliCustomerIdle4") ]
+water_fixtures = [ NodePath("../Toilet1"), NodePath("../Toilet2") ]
+
+[node name="DeliWorkerIdle1" type="Position2D" parent="Deli" index="6"]
+position = Vector2( 588, 488 )
+
+[node name="DeliCustomerIdle1" type="Position2D" parent="Deli" index="7"]
+position = Vector2( 715, 488 )
+
+[node name="DeliCustomerIdle2" type="Position2D" parent="Deli" index="8"]
+position = Vector2( 794, 488 )
+
+[node name="DeliCustomerIdle3" type="Position2D" parent="Deli" index="9"]
+position = Vector2( 867, 488 )
+
+[node name="DeliCustomerIdle4" type="Position2D" parent="Deli" index="10"]
+position = Vector2( 937, 488 )
 
 [node name="Structure" type="Sprite" parent="." index="6"]
 position = Vector2( 641, 362 )
@@ -193,3 +317,15 @@ texture = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[editable path="Second/Microwave"]
+[editable path="Second/Shower"]
+[editable path="Second/Toilet"]
+[editable path="Second/Television"]
+[editable path="First/Microwave"]
+[editable path="First/Bath"]
+[editable path="First/Toilet"]
+[editable path="Deli/Toilet1"]
+[editable path="Deli/Toilet2"]
+[editable path="Deli/Cooker"]
+[editable path="Deli/Counter"]

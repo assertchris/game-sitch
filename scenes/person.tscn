@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/person.gd" type="Script" id=1]
+[ext_resource path="res://images/person-4.png" type="Texture" id=2]
+[ext_resource path="res://images/person-2.png" type="Texture" id=3]
+[ext_resource path="res://images/person-1.png" type="Texture" id=4]
+[ext_resource path="res://images/person-3.png" type="Texture" id=5]
+[ext_resource path="res://resources/emote-font.tres" type="DynamicFont" id=6]
+
+[sub_resource type="Animation" id=2]
+resource_name = "ShowIncome"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.360784, 0.580392, 0.0509804, 1 ), Color( 0.360784, 0.580392, 0.0509804, 1 ), Color( 0.360784, 0.580392, 0.0509804, 0 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "ShowPenalty"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.788235, 0.164706, 0.164706, 1 ), Color( 0.788235, 0.164706, 0.164706, 1 ), Color( 0.788235, 0.164706, 0.164706, 0 ) ]
+}
+
+[node name="Person" type="KinematicBody2D" groups=[
+"people",
+]]
+script = ExtResource( 1 )
+images = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 2 ) ]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -38 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+
+[node name="IdleTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="WaitTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="UseTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="TargetEnabledTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 0.788235, 0.164706, 0.164706, 1 )
+margin_left = -20.0
+margin_top = -102.0
+margin_right = 20.0
+margin_bottom = -82.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.788235, 0.164706, 0.164706, 1 )
+text = "-$5"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelAnimator" type="AnimationPlayer" parent="."]
+anims/ShowIncome = SubResource( 2 )
+anims/ShowPenalty = SubResource( 1 )
+
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]
+[connection signal="timeout" from="UseTimer" to="." method="_on_use_timer_timeout"]
+[connection signal="timeout" from="TargetEnabledTimer" to="." method="_on_target_enabled_timer_timeout"]
