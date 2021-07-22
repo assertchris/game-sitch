@@ -21,14 +21,16 @@ func _ready() -> void:
 	Variables.current_days = Constants.STARTING_DAYS
 
 	Events.emit_signal("start_tick_timer")
+
+	#warning-ignore:return_value_discarded
 	Events.connect("tick", self, "_on_tick")
 
 func _on_tick() -> void:
 	var next_minutes = Variables.current_minutes + Constants.TICK_MINUTES_INCREASE
 
-	if next_minutes >= 60:
+	if next_minutes as int >= 60:
 		Variables.current_minutes = next_minutes % 60
-		Variables.current_hours += floor(next_minutes / 60)
+		Variables.current_hours += floor(next_minutes / 60.0) as int
 	else:
 		Variables.current_minutes = next_minutes
 

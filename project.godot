@@ -42,6 +42,10 @@ config/name="Sitch"
 run/main_scene="res://scenes/screens/menu.tscn"
 config/icon="res://icon.png"
 
+[audio]
+
+default_bus_layout="res://resources/audio-bus-layout.tres"
+
 [autoload]
 
 Constants="*res://scenes/globals/constants.tscn"

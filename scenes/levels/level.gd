@@ -29,11 +29,11 @@ func _ready() -> void:
 
 	if power_path:
 		_power = get_node(power_path) as ColorRect
-		original_power_height = _power.rect_size.y
+		original_power_height = _power.rect_size.y as int
 
 	if water_path:
 		_water = get_node(water_path) as ColorRect
-		original_water_height = _water.rect_size.y
+		original_water_height = _water.rect_size.y as int
 
 func _on_stats_timer_timeout():
 	if _time:
