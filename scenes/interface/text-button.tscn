@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://resources/button-font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/interface/text-button.gd" type="Script" id=2]
+
+[node name="TextButton" type="Button"]
+margin_right = 75.0
+margin_bottom = 57.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+enabled_focus_mode = 0
+text = "button"
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="." to="." method="_on_text_button_pressed"]

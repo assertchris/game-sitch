@@ -1,5 +1,10 @@
 extends "res://scenes/screens/screen.gd"
 
+func _ready() -> void:
+	if not Variables.has_started_music:
+		Sounds.play_track(Constants.TRACKS.MUSIC_LOOP_1)
+		Variables.has_started_music = true
+
 func _on_new_game_pressed() -> void:
 	Screens.change_screen(Constants.SCREENS.NEW_GAME)
 

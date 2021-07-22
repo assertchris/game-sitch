@@ -3,6 +3,7 @@ extends Node
 enum SCREENS {
 	NONE,
 	CREDITS,
+	INTRO,
 	LEVEL,
 	MENU,
 	NEW_GAME,
@@ -12,6 +13,7 @@ enum SCREENS {
 
 const SCREENS_PATHS := {
 	SCREENS.CREDITS: "res://scenes/screens/credits.tscn",
+	SCREENS.INTRO: "res://scenes/screens/intro.tscn",
 	SCREENS.LEVEL: "res://scenes/screens/level.tscn",
 	SCREENS.MENU: "res://scenes/screens/menu.tscn",
 	SCREENS.NEW_GAME: "res://scenes/screens/new-game.tscn",
@@ -25,6 +27,7 @@ enum SOUNDS {
 	INCOME,
 	LOSE,
 	PENALTY,
+	POWER_OFF,
 	POWER_ON,
 	REFILL,
 	WATER_ON,
@@ -36,10 +39,20 @@ const SOUNDS_PATHS := {
 	SOUNDS.INCOME: "res://sounds/income-1.wav",
 	SOUNDS.LOSE: "res://sounds/lose-1.wav",
 	SOUNDS.PENALTY: "res://sounds/penalty-1.wav",
+	SOUNDS.POWER_OFF: "res://sounds/power-off-1.wav",
 	SOUNDS.POWER_ON: "res://sounds/power-on-1.wav",
 	SOUNDS.REFILL: "res://sounds/refill-1.wav",
 	SOUNDS.WATER_ON: "res://sounds/water-on-1.wav",
 	SOUNDS.WIN: "res://sounds/win-1.wav",
+}
+
+enum TRACKS {
+	NONE,
+	MUSIC_LOOP_1,
+}
+
+const TRACKS_PATHS := {
+	TRACKS.MUSIC_LOOP_1: "res://sounds/music-loop-1.ogg"
 }
 
 enum LEVELS {

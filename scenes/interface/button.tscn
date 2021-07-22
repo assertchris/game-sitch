@@ -8,8 +8,8 @@
 [ext_resource path="res://images/button-3.png" type="Texture" id=6]
 
 [node name="Button" type="CenterContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_right = -920.0
+margin_bottom = -610.0
 mouse_default_cursor_shape = 2
 script = ExtResource( 1 )
 __meta__ = {
@@ -18,16 +18,14 @@ __meta__ = {
 images = [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ) ]
 
 [node name="Texture" type="TextureButton" parent="."]
-margin_left = 460.0
-margin_top = 305.0
-margin_right = 820.0
-margin_bottom = 415.0
+margin_right = 360.0
+margin_bottom = 110.0
 rect_min_size = Vector2( 360, 110 )
 mouse_filter = 2
-texture_normal = ExtResource( 4 )
+texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
-texture_disabled = ExtResource( 4 )
+texture_hover = ExtResource( 6 )
+texture_disabled = ExtResource( 6 )
 texture_focused = ExtResource( 3 )
 expand = true
 stretch_mode = 3
@@ -36,10 +34,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 576.0
-margin_top = 334.0
-margin_right = 704.0
-margin_bottom = 385.0
+margin_left = 116.0
+margin_top = 29.0
+margin_right = 244.0
+margin_bottom = 80.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "button"

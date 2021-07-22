@@ -1,8 +1,8 @@
 extends Node
 
 var has_loaded := false
+var has_started_music := false
 var needs_to_save := false
-
 var current_level := preload("res://scenes/globals/constants.gd").LEVELS.NONE
 var current_power: int
 var current_water: int
@@ -10,12 +10,13 @@ var current_money: int
 var current_hours: int
 var current_minutes: int
 var current_days: int
-
 var sounds_bus := AudioServer.get_bus_index("sounds")
+var music_bus := AudioServer.get_bus_index("music")
 
 var initial = {
 	"volume": {
 		"sounds": db2linear(AudioServer.get_bus_volume_db(sounds_bus)),
+		"music": db2linear(AudioServer.get_bus_volume_db(music_bus)),
 	},
 }
 

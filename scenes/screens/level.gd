@@ -3,10 +3,13 @@ extends "res://scenes/screens/screen.gd"
 export var diner_block: PackedScene
 
 onready var _center := $Game/Center
+onready var _restart := $Interface/Restart
 
 var level: Level
 
 func _ready() -> void:
+	_restart.visible = false
+
 	if Variables.current_level == Constants.LEVELS.DINER_BLOCK:
 		level = diner_block.instance()
 
@@ -24,6 +27,9 @@ func _ready() -> void:
 
 	#warning-ignore:return_value_discarded
 	Events.connect("tick", self, "_on_tick")
+
+	#warning-ignore:return_value_discarded
+	Events.connect("level_lost", self, "_on_level_lost")
 
 func _on_tick() -> void:
 	var next_minutes = Variables.current_minutes + Constants.TICK_MINUTES_INCREASE
@@ -76,3 +82,25 @@ func _on_tick() -> void:
 						Sounds.play_sound(Constants.SOUNDS.REFILL)
 
 				Variables.current_water -= fixture.resource_cost
+
+func _on_level_lost() -> void:
+	var people = get_tree().get_nodes_in_group("people")
+
+	for person in people:
+		person.set_process(false)
+
+	var restart_position_node = level.get_restart_position()
+
+	_restart.visible = true
+	_restart.rect_global_position = restart_position_node.global_position
+
+func _on_yes_pressed():
+	Screens.change_screen(Constants.SCREENS.LEVEL)
+
+func _on_no_pressed():
+	Screens.change_screen(Constants.SCREENS.MENU)
+
+func _on_leave_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			Screens.change_screen(Constants.SCREENS.MENU)

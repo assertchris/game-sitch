@@ -5,6 +5,7 @@ signal pressed
 
 export var label := "button"
 export (Array, Texture) var images
+export var scale := 1.0
 
 onready var _texture := $Texture
 onready var _label := $Label
@@ -19,6 +20,8 @@ func _ready() -> void:
 	_texture.texture_hover = image_texture
 
 func _process(_delta: float) -> void:
+	rect_scale = Vector2(scale, scale)
+
 	if _label:
 		_label.text = label
 

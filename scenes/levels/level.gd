@@ -7,12 +7,14 @@ export var day_path: NodePath
 export var money_path: NodePath
 export var power_path: NodePath
 export var water_path: NodePath
+export var restart_position: NodePath
 
 var _time: Label
 var _day: Label
 var _money: Label
 var _power: ColorRect
 var _water: ColorRect
+var _restart_position: Position2D
 
 var original_power_height: int
 var original_water_height: int
@@ -35,6 +37,9 @@ func _ready() -> void:
 		_water = get_node(water_path) as ColorRect
 		original_water_height = _water.rect_size.y as int
 
+	if restart_position:
+		_restart_position = get_node(restart_position) as Position2D
+
 func _on_stats_timer_timeout():
 	if _time:
 		_time.text = str("%02d" % Variables.current_hours) + ":" + str("%02d" % Variables.current_minutes)
@@ -50,3 +55,6 @@ func _on_stats_timer_timeout():
 
 	if _water:
 		_water.rect_size.y = round((Variables.current_water as float / Constants.STARTING_WATER) * original_water_height)
+
+func get_restart_position() -> Position2D:
+	return _restart_position

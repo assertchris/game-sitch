@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/screens/screen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/screens/settings.gd" type="Script" id=2]
 [ext_resource path="res://scenes/interface/button.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/button-font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://scenes/interface/text-button.tscn" type="PackedScene" id=5]
 
 [node name="Settings" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -20,23 +21,83 @@ __meta__ = {
 
 [node name="Buttons" type="VBoxContainer" parent="Interface/Center" index="0"]
 margin_left = 460.0
-margin_top = 277.0
+margin_top = 228.0
 margin_right = 820.0
-margin_bottom = 442.0
+margin_bottom = 492.0
+custom_constants/separation = 20
 
-[node name="Label" type="Label" parent="Interface/Center/Buttons" index="0"]
+[node name="Sound" type="HBoxContainer" parent="Interface/Center/Buttons" index="0"]
 margin_right = 360.0
-margin_bottom = 51.0
+margin_bottom = 57.0
+
+[node name="Label" type="Label" parent="Interface/Center/Buttons/Sound" index="0"]
+margin_top = 3.0
+margin_right = 112.0
+margin_bottom = 54.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "under construction"
+text = "Sound"
 
-[node name="Back" parent="Interface/Center/Buttons" index="1" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 55.0
+[node name="Spacer" type="Control" parent="Interface/Center/Buttons/Sound" index="1"]
+margin_left = 116.0
+margin_right = 116.0
+margin_bottom = 57.0
+size_flags_horizontal = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="On" parent="Interface/Center/Buttons/Sound" index="2" instance=ExtResource( 5 )]
+margin_left = 231.0
+margin_right = 284.0
+custom_colors/font_color_disabled = Color( 0.501961, 0.501961, 0.501961, 1 )
+text = "on"
+
+[node name="Off" parent="Interface/Center/Buttons/Sound" index="3" instance=ExtResource( 5 )]
+margin_left = 288.0
 margin_right = 360.0
-margin_bottom = 165.0
+custom_colors/font_color_disabled = Color( 0.501961, 0.501961, 0.501961, 1 )
+text = "off"
+
+[node name="Music" type="HBoxContainer" parent="Interface/Center/Buttons" index="1"]
+margin_top = 77.0
+margin_right = 360.0
+margin_bottom = 134.0
+
+[node name="Label" type="Label" parent="Interface/Center/Buttons/Music" index="0"]
+margin_top = 3.0
+margin_right = 104.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Music"
+
+[node name="Spacer" type="Control" parent="Interface/Center/Buttons/Music" index="1"]
+margin_left = 108.0
+margin_right = 108.0
+margin_bottom = 57.0
+size_flags_horizontal = 2
+
+[node name="On" parent="Interface/Center/Buttons/Music" index="2" instance=ExtResource( 5 )]
+margin_left = 231.0
+margin_right = 284.0
+custom_colors/font_color_disabled = Color( 0.501961, 0.501961, 0.501961, 1 )
+text = "on"
+
+[node name="Off" parent="Interface/Center/Buttons/Music" index="3" instance=ExtResource( 5 )]
+margin_left = 288.0
+margin_right = 360.0
+custom_colors/font_color_disabled = Color( 0.501961, 0.501961, 0.501961, 1 )
+text = "off"
+
+[node name="Back" parent="Interface/Center/Buttons" index="2" instance=ExtResource( 3 )]
+margin_top = 154.0
+margin_right = 360.0
+margin_bottom = 264.0
 label = "back"
 
+[connection signal="pressed" from="Interface/Center/Buttons/Sound/On" to="." method="_on_sound_on_pressed"]
+[connection signal="pressed" from="Interface/Center/Buttons/Sound/Off" to="." method="_on_sound_off_pressed"]
+[connection signal="pressed" from="Interface/Center/Buttons/Music/On" to="." method="_on_music_on_pressed"]
+[connection signal="pressed" from="Interface/Center/Buttons/Music/Off" to="." method="_on_music_off_pressed"]
 [connection signal="pressed" from="Interface/Center/Buttons/Back" to="." method="_on_back_pressed"]

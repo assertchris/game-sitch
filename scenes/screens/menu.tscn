@@ -18,39 +18,32 @@ __meta__ = {
 
 [node name="Buttons" type="VBoxContainer" parent="Interface/Center" index="0"]
 margin_left = 460.0
-margin_top = 134.0
+margin_top = 110.0
 margin_right = 820.0
-margin_bottom = 586.0
+margin_bottom = 610.0
+custom_constants/separation = 20
 
 [node name="NewGame" parent="Interface/Center/Buttons" index="0" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_right = 360.0
 margin_bottom = 110.0
 label = "new game"
 
 [node name="Settings" parent="Interface/Center/Buttons" index="1" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 114.0
+margin_top = 130.0
 margin_right = 360.0
-margin_bottom = 224.0
+margin_bottom = 240.0
 label = "settings"
 
 [node name="Credits" parent="Interface/Center/Buttons" index="2" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 228.0
+margin_top = 260.0
 margin_right = 360.0
-margin_bottom = 338.0
+margin_bottom = 370.0
 label = "credits"
 
 [node name="Patrons" parent="Interface/Center/Buttons" index="3" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 342.0
+margin_top = 390.0
 margin_right = 360.0
-margin_bottom = 452.0
+margin_bottom = 500.0
 label = "patrons"
 
 [connection signal="pressed" from="Interface/Center/Buttons/NewGame" to="." method="_on_new_game_pressed"]

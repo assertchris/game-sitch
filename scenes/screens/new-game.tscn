@@ -19,23 +19,20 @@ __meta__ = {
 
 [node name="Buttons" type="VBoxContainer" parent="Interface/Center" index="0"]
 margin_left = 460.0
-margin_top = 248.0
+margin_top = 240.0
 margin_right = 820.0
-margin_bottom = 472.0
+margin_bottom = 480.0
+custom_constants/separation = 20
 
 [node name="DinerBlock" parent="Interface/Center/Buttons" index="0" instance=ExtResource( 5 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_right = 360.0
 margin_bottom = 110.0
 label = "diner block"
 
 [node name="Back" parent="Interface/Center/Buttons" index="1" instance=ExtResource( 5 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 114.0
+margin_top = 130.0
 margin_right = 360.0
-margin_bottom = 224.0
+margin_bottom = 240.0
 label = "back"
 
 [connection signal="pressed" from="Interface/Center/Buttons/DinerBlock" to="." method="_on_diner_block_pressed"]

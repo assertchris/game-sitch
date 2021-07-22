@@ -28,18 +28,24 @@ _global_script_classes=[ {
 "class": "Screen",
 "language": "GDScript",
 "path": "res://scenes/screens/screen.gd"
+}, {
+"base": "Button",
+"class": "TextButton",
+"language": "GDScript",
+"path": "res://scenes/interface/text-button.gd"
 } ]
 _global_script_class_icons={
 "Fixture": "",
 "Level": "",
 "Person": "",
-"Screen": ""
+"Screen": "",
+"TextButton": ""
 }
 
 [application]
 
 config/name="Sitch"
-run/main_scene="res://scenes/screens/menu.tscn"
+run/main_scene="res://scenes/screens/intro.tscn"
 config/icon="res://icon.png"
 
 [audio]

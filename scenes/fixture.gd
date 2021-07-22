@@ -40,6 +40,12 @@ func _on_gui_input(event: InputEvent) -> void:
 
 					if type == Constants.FIXTURES.POWER:
 						Sounds.play_sound(Constants.SOUNDS.POWER_ON)
+				else:
+					if type == Constants.FIXTURES.WATER:
+						Sounds.play_sound(Constants.SOUNDS.WATER_ON)
+
+					if type == Constants.FIXTURES.POWER:
+						Sounds.play_sound(Constants.SOUNDS.POWER_OFF)
 
 func _on_enable_timer_timeout():
 	can_enable = true

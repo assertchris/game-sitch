@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/screens/screen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/screens/level.gd" type="Script" id=2]
+[ext_resource path="res://scenes/interface/text-button.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/levels/diner-block.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/stats-font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://images/leave-1.png" type="Texture" id=6]
 
 [node name="Level" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -27,3 +30,54 @@ margin_bottom = 360.0
 current = true
 
 [node name="Interface" type="CanvasLayer" parent="." index="1"]
+
+[node name="Restart" type="VBoxContainer" parent="Interface" index="0"]
+margin_left = 624.0
+margin_top = 470.0
+margin_right = 1174.0
+margin_bottom = 636.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Interface/Restart" index="0"]
+margin_right = 550.0
+margin_bottom = 105.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Looks like you ran out of money. Maybe you
+shouldn't have been such a slumlord. 
+Wanna try again, slumlord?"
+
+[node name="Buttons" type="HBoxContainer" parent="Interface/Restart" index="1"]
+margin_top = 109.0
+margin_right = 550.0
+margin_bottom = 166.0
+size_flags_stretch_ratio = 0.0
+custom_constants/separation = 20
+alignment = 2
+
+[node name="Yes" parent="Interface/Restart/Buttons" index="0" instance=ExtResource( 3 )]
+margin_left = 402.0
+margin_right = 477.0
+text = "yes"
+
+[node name="No" parent="Interface/Restart/Buttons" index="1" instance=ExtResource( 3 )]
+margin_left = 497.0
+margin_right = 550.0
+text = "no"
+
+[node name="Leave" type="TextureRect" parent="Interface" index="1"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.5, 0.5 )
+mouse_default_cursor_shape = 2
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Interface/Restart/Buttons/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="Interface/Restart/Buttons/No" to="." method="_on_no_pressed"]
+[connection signal="gui_input" from="Interface/Leave" to="." method="_on_leave_gui_input"]
